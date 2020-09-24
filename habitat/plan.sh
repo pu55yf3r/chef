@@ -26,7 +26,7 @@ pkg_deps=(
   core/cacerts
   core/libffi
   core/coreutils
-  core/libarchive
+  core/libarchive/3.4.3/20200924114743
 )
 pkg_svc_user=root
 
