@@ -225,9 +225,6 @@ RSpec.describe ChefConfig::Config do
   end
 
   describe "#var_chef_path" do
-    # work around the memoization
-    before(:each) { ChefConfig::Config.class_variable_set :@@etc_chef_dir, nil }
-
     let (:dirname) { ChefUtils::Dist::Infra::DIR_SUFFIX }
 
     context "on unix", :unix_only do
