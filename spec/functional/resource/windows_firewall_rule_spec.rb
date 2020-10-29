@@ -46,6 +46,7 @@ describe Chef::Resource::WindowsFirewallRule, :windows_only do
     after { delete_rule }
 
     it "creates the rule" do
+      puts powershell_exec!("Import-Module NetSecurity;get-module").result
       subject.run_action(:create)
       expect(get_installed_rule_name).to eq(rule_name)
       expect(get_installed_rule_remote_port).to eq(remote_port)

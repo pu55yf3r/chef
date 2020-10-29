@@ -19,7 +19,7 @@ try {
 
     hab pkg binlink --force $PackageIdentifier
 
-    /hab/bin/rspec --format documentation --tag ~executables --tag ~choco_installed spec/functional
+    /hab/bin/rspec --format documentation --tag ~executables --tag ~choco_installed spec/functional/resource/windows_firewall_rule_spec.rb
     if (-not $?) {
         Write-Host "Importing NetSecurity..."
         Import-Module NetSecurity
