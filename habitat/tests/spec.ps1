@@ -19,14 +19,15 @@ try {
 
     hab pkg binlink --force $PackageIdentifier
 
-    Write-Host "Importing NetSecurity..."
-    Import-Module NetSecurity
-
-    Write-Host "Importing PackageManagement..."
-    Import-Module PackageManagement
-
-    # /hab/bin/rspec --format documentation --tag ~executables --tag ~choco_installed spec/functional
-    if (-not $?) { throw "functional testing failed"}
+    /hab/bin/rspec --format documentation --tag ~executables --tag ~choco_installed spec/functional
+    if (-not $?) {
+        Write-Host "Importing NetSecurity..."
+        Import-Module NetSecurity
+    
+        Write-Host "Importing PackageManagement..."
+        Import-Module PackageManagement
+        throw "functional testing failed"
+    }
 } finally {
     Pop-Location
 }
